@@ -1,4 +1,4 @@
-myAlphabet = 'abcdefghijklmnopqrstuvwxyzабвгдеёжзийклмнопрстуфхцчшщъыьэюя `1234567890-=~!@#$%^&*()_+{}|[]:";<>?,./'
+myAlphabet = 'abcdefghijklmnopqrstuvwxyzабвгдеёжзийклмнопрстуфхцчшщъыьэюя `1234567890-=~!@#№$%^&*()_+[]:";'+"'"+'<>?,./'
 print('Enter "exit", "quit" or "0" to exit from programm. In other case strike any other key.')
 while input() != 0:
     print("Enter string for encoding: ")

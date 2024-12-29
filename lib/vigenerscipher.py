@@ -1,6 +1,7 @@
 class Vigener():
     def encode(self, inpt, key="a"):
-        myAlphabet = 'abcdefghijklmnopqrstuvwxyzабвгдеёжзийклмнопрстуфхцчшщъыьэюя `1234567890-=~!@#$%^&*()_+{}|[]\:";<>?,./'
+        #Don't support \ symbol
+        myAlphabet = 'abcdefghijklmnopqrstuvwxyzабвгдеёжзийклмнопрстуфхцчшщъыьэюя `1234567890-=~!@#№$%^&*()_+[]:";'+"'"+'<>?,./'
         inpt = inpt.lower()
         key = key.lower()
         encoded = ""
