@@ -1,17 +1,13 @@
-myAlphabet = 'abcdefghijklmnopqrstuvwxyzабвгдеёжзийклмнопрстуфхцчшщъыьэюя `1234567890-=~!@#№$%^&*()_+[]:";'+"'"+'<>?,./'
+myAlphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTабвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ `1234567890-=~!@#№$%^&*()_+[]:";'+"'"+'<>?,./'
 print('This Vigener encoder supports eng, ru alphabets, space, numbers and -=~!@#№$%^&*()_+[]:";'+"'"+'<>?,./ symbols.')
 print('Enter "EXIT" or "QUIT" to exit from programm. In other case strike any other key.')
 while True:
-    print("Enter string for decoding: ")
-    inpt = input()
+    inpt = input("Enter string for decoding: ")
     if inpt=="EXIT" or inpt=="QUIT":
         break
-    inpt = inpt.lower()
-    print("Enter key: ")
-    key = input()
+    key = input("Enter key: ")
     if key=="EXIT" or key=="QUIT":
         break
-    key = key.lower()
     decoded = ""
     i = 1
     for letter in inpt:
