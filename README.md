@@ -1,1 +1,1 @@
-Just an experiments. Projects is on other repos.
+Just an experiments. Projects is in other repos.
