@@ -38,36 +38,42 @@ plt.ion()
 plt.xlabel("Distance (X axis, meters)")
 plt.ylabel('Height (Y axis, meters)')
 plt.title("The trajectory of the projectile, taking into account the aerodynamic drag")
+plt.axis("equal")
+plt.scatter(0, 0)
 plt.show()
-#Основные вычисления
-#Пока высота не равна нулю:
-#	#посчитать Fd 
-#	#разложить v по базису
-#	#разложить Fd по базису
-#	#сложить горизонтальные, вертикальные базисы
-#	#по сумме базисов найти угол скорости
-#	#изменить y
-#	#изменить x
-	#отобразить на графике|
-
-
+plt.pause(1)
 
 while y>=0:
+	#Fd
 	Fd = 0.5 * Cd * A * p * v**2
-	Fd_angle = v_angle + 180
-	vy = v * sin(v_angle)
-	vx = v * cos(v_angle)
-	Fdy = Fd * sin(Fd_angle)
-	Fdx = Fd * cos(Fd_angle)
-	ay = Fdy / m
-	ax = Fdx / m
-	dy = (vy - ay - g)*step
-	dx = (vx - ax)*step
-	v_angle = arctan(dy/dx)
+	#v по базису
+	vy = v * cos(v_angle)
+	vx = v * sin(v_angle)
+	#Fd по базису
+	Fdy = -Fd * cos(v_angle)
+	Fdx = -Fd * sin(v_angle)
+	#Ускорения
+	ay = -g + Fdy / m
+	ax = -Fdx / m
+	#Дельты
+	dx = vx * step + 0.5 * ax * step**2
+	dy = vy * step + 0.5 * ay * step**2
 	y += dy
 	x += dx
-	v_angle = arctan(dy/dx)
-	v -= Fd
+	vy += ay * step
+	vx += ax * step
+	#Общий вектор по Пифагору
+	v = math.sqrt(vx**2+vy**2)
+	#Угол скорости
+	try:
+		v_angle = arctan(dy/dx)
+	except Exception:
+		if vy > 0:
+			v_angle = 90
+		elif vy == 0:
+			v_angle = 0
+		else:
+			v_angle = -90
 	plt.scatter(x, y)
 	plt.draw()
 input("Type anything to exit: ")
