@@ -21,23 +21,23 @@ def arcctg(degrees):
 	
 
 
-# Setting			# Name		<> Value		<> Comment
-g = 9.81     		# g  		<> (m/s^2)		<> Ускорение свободного падения (м/с²)
-Cd = input() 		# Cd 		<> (ratio)		<> Коэффициент лобового сопротивления для сферы
-A = input()  		# A  		<> (m^2)		<> Площадь поперечного сечения (м²)
-p = 1.225  			# p  		<> (kg/m^3)		<> Плотность воздуха (кг/м³) #резерв для вычисления плотности по высоте
-m = input()			# m  		<> (kg)			<> Масса снаряда (кг)
-v = input()			# v 		<> (m/s)		<> Начальная скорость 
-v_angle = input()	# v_angle	<> (degrees)	<> Угол запуска снаряда относительно земли 
-step = input()		# step		<> (seconds)	<> Шаг просчёта
-x = 0				# x			<> (int)		<> Координата x в момент времени
-y = 0				# y			<> (int)		<> координата y в момент времени
+# Setting					# Name		<> Value		<> Comment
+g = 9.81     				# g  		<> (m/s^2)		<> Ускорение свободного падения (м/с²)
+Cd = input("Cd: ") 			# Cd 		<> (ratio)		<> Коэффициент лобового сопротивления для сферы
+A = input("A: ")  			# A  		<> (m^2)		<> Площадь поперечного сечения (м²)
+p = 1.225  					# p  		<> (kg/m^3)		<> Плотность воздуха (кг/м³) #резерв для вычисления плотности по высоте
+m = input("m: ")			# m  		<> (kg)			<> Масса снаряда (кг)
+v = input("v: ")			# v 		<> (m/s)		<> Начальная скорость 
+v_angle = input("Angle: ")	# v_angle	<> (degrees)	<> Угол запуска снаряда относительно земли 
+step = input("Step: ")		# step		<> (seconds)	<> Шаг просчёта
+x = 0						# x			<> (int)		<> Координата x в момент времени
+y = 0						# y			<> (int)		<> координата y в момент времени
 
 #создание графика
 plt.ion()
-plt.xlabel('Расстояние (м)')
-plt.ylabel('Высота (м)')
-plt.title('Траектория полета снаряда с учетом аэродинамического сопротивления')
+plt.xlabel("Distance (X axis, meters)")
+plt.ylabel('Height (Y axis, meters)')
+plt.title("The trajectory of the projectile, taking into account the aerodynamic drag")
 plt.show()
 #Основные вычисления
 #Пока высота не равна нулю:
@@ -45,9 +45,9 @@ plt.show()
 #	#разложить v по базису
 #	#разложить Fd по базису
 #	#сложить горизонтальные, вертикальные базисы
-	#по сумме базисов найти угол скорости
-	#изменить y
-	#изменить x
+#	#по сумме базисов найти угол скорости
+#	#изменить y
+#	#изменить x
 	#отобразить на графике|
 
 
@@ -61,6 +61,17 @@ plt.show()
 	#-----
 	#Fdy = Fd * sin(Fd_angle)
 	#Fdx = Fd * cos(Fd_angle)
+	#ay = Fdy / m
+	#ax = Fdx / m
 	#-----
-	#dy = (vy - Fdy - g)*step
-	#dx = (vx - Fdx - g)*step
+	#dy = (vy - ay - g)*step
+	#dx = (vx - ax)*step
+	#-----
+	#v_angle = arctan(dy/dx)
+	#-----
+	#y += dy
+	#x += x
+	#-----
+	#plt.scatter(x, y)
+	#plt.draw()
+input("Type anything to exit: ")
