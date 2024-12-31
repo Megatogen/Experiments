@@ -41,39 +41,35 @@ plt.title("The trajectory of the projectile, taking into account the aerodynamic
 plt.axis("equal")
 plt.scatter(0, 0)
 plt.show()
-plt.pause(1)
+plt.pause(0.001)
 
 while y>=0:
 	#Fd
 	Fd = 0.5 * Cd * A * p * v**2
 	#v по базису
-	vy = v * cos(v_angle)
-	vx = v * sin(v_angle)
+	vx = v * cos(v_angle)
+	vy = v * sin(v_angle)
 	#Fd по базису
-	Fdy = -Fd * cos(v_angle)
-	Fdx = -Fd * sin(v_angle)
+	Fdx = -Fd * cos(v_angle)
+	Fdy = -Fd * sin(v_angle)
+
 	#Ускорения
 	ay = -g + Fdy / m
 	ax = -Fdx / m
 	#Дельты
 	dx = vx * step + 0.5 * ax * step**2
 	dy = vy * step + 0.5 * ay * step**2
-	y += dy
 	x += dx
-	vy += ay * step
+	y += dy
 	vx += ax * step
+	vy += ay * step
 	#Общий вектор по Пифагору
 	v = math.sqrt(vx**2+vy**2)
 	#Угол скорости
-	try:
-		v_angle = arctan(dy/dx)
-	except Exception:
-		if vy > 0:
-			v_angle = 90
-		elif vy == 0:
-			v_angle = 0
-		else:
-			v_angle = -90
+	if vx != 0:
+		v_angle_rad = math.atan2(vy, vx)
+	else:
+		v_angle_rad = math.copysign(math.pi/2, vy)
 	plt.scatter(x, y)
 	plt.draw()
 input("Type anything to exit: ")
