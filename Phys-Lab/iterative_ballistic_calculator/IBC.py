@@ -20,23 +20,23 @@ def arcctg(radians):
 	return math.pi / 2 - math.atan(radians)
 	
 
-
-# Setting										# Name		<> Value		<> Comment
-g = 9.81     									# g  		<> (m/s^2)		<> Ускорение свободного падения (м/с²)
-Cd = float(input("Cd: ")) 						# Cd 		<> (ratio)		<> Коэффициент лобового сопротивления для сферы
-A = float(input("A: "))  						# A  		<> (m^2)		<> Площадь поперечного сечения (м²)
-p = 1.225  										# p  		<> (kg/m^3)		<> Плотность воздуха (кг/м³) #резерв для вычисления плотности по высоте
-m = float(input("m: "))							# m  		<> (kg)			<> Масса снаряда (кг)
-v = float(input("v: "))						# v 		<> (m/s)		<> Начальная скорость 
-v_angle = math.radians(float(input("Angle: ")))	# v_angle	<> (degrees)	<> Угол запуска снаряда относительно земли 
-step = float(input("Step(<1): "))				# step		<> (seconds)	<> Шаг просчёта
-x = 0											# x			<> (int)		<> Координата x в момент времени
-y = 0											# y			<> (int)		<> координата y в момент времени
-xpos = [0]										# xpos		<> (array)		<> Массив положений по x, исп. для отрисовки
-ypos = [0]										# ypos		<> (array)		<> массив положений по y, исп. для отрисовки
-xforax = [0]									# xforax	<> (array)		<> Массив, содержащий нулевые координаты x
-yforax = [0, 0]									# yforax	<> (array)		<> Массив, содержащий нулевые координаты y
-inRealTime = False								# inRealTime<> (boolean)	<> Флаг, отвечающий за отрисовку в реальном времени
+#in Range: a-b(available values: a; n; b), a<n<b(available values: a+0,00...01; n; b-0,00...01)
+# Setting										# Name		<> Value		<> Range		<> Comment
+g = 9.81     									# g  		<> (m/s^2)		<> const		<> Ускорение свободного падения (м/с²)
+Cd = float(input("Cd: ")) 						# Cd 		<> (ratio)		<> 0-1			<> Коэффициент лобового сопротивления
+A = float(input("A: "))  						# A  		<> (m^2)		<> non-negative	<> Площадь поперечного сечения (м²)
+p = 1.225  										# p  		<> (kg/m^3)		<> const		<> Плотность воздуха (кг/м³) #резерв для вычисления плотности по высоте
+m = float(input("m: "))							# m  		<> (kg)			<> non-negative	<> Масса снаряда (кг)
+v = float(input("v: "))							# v 		<> (m/s)		<> non-negative	<> Начальная скорость 
+v_angle = math.radians(float(input("Angle: ")))	# v_angle	<> (degrees)	<> 0-90			<> Угол запуска снаряда относительно земли 
+step = float(input("Step(<1): "))				# step		<> (seconds)	<> 0>n>1		<> Шаг просчёта
+x = 0											# x			<> (int)		<> unlimited	<> Координата x в момент времени
+y = 0											# y			<> (int)		<> unlimited	<> координата y в момент времени
+xpos = [0]										# xpos		<> (array)		<> unlimited	<> Массив положений по x, исп. для отрисовки
+ypos = [0]										# ypos		<> (array)		<> unlimited	<> Массив положений по y, исп. для отрисовки
+xforax = [0]									# xforax	<> (array)		<> unlimited	<> Массив, содержащий нулевые координаты x
+yforax = [0, 0]									# yforax	<> (array)		<> unlimited	<> Массив, содержащий нулевые координаты y
+inRealTime = False								# inRealTime<> (boolean)	<> T/F			<> Флаг. False - просчитывает, потом показывает. True - просчитал точку-показал и т. д.
 v0 = v
 inpt = input("Draw in real time? 1 or true, other - false: ")
 if inpt=="1" or inpt.lower()=="true":
