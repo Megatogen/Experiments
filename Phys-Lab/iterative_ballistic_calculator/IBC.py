@@ -21,7 +21,7 @@ def arcctg(radians):
 	
 
 #in Range: a-b(available values: a; n; b), a<n<b(available values: a+0,00...01; n; b-0,00...01)
-# Setting										# Name		<> Value		<> Range		<> Comment
+# Setting                                       # Name      <> Value        <> Range        <> Comment
 g = 9.81                                        # g         <> (m/s^2)      <> const        <> Ускорение свободного падения (м/с²)
 Cd = float(input("Cd: "))                       # Cd        <> (ratio)      <> 0-1          <> Коэффициент лобового сопротивления
 A = float(input("A: "))                         # A         <> (m^2)        <> non-negative <> Площадь поперечного сечения (м²)
